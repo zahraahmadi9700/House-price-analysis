@@ -1,92 +1,109 @@
-# 🏡 Ames Housing Price Analysis
+🏡 Ames Housing Price Analysis
 
-## 📌 Project Overview
-This project provides an in-depth analysis of the **Ames Housing Dataset** to investigate the key factors that drive residential property sale prices. 
+📌 Project Overview
 
-The end-to-end workflow covers data cleaning, feature engineering, exploratory data analysis (EDA), statistical visualization, and relational database querying using SQLite and Python.
+This project analyzes the Ames Housing Dataset to explore the factors associated with residential property sale prices.
 
----
-
-## 🛠️ Tools & Technologies
-- **Language:** Python 3.x
-- **Data Manipulation:** Pandas, NumPy
-- **Data Visualization:** Matplotlib
-- **Database & Querying:** SQLite3, SQL
-- **Environment:** Jupyter Notebook, Git & GitHub
+The analysis follows an end-to-end data analysis workflow, including data inspection, data cleaning, feature engineering, exploratory data analysis (EDA), data visualization, outlier investigation, and SQL analysis using Python and SQLite.
 
 ---
 
-## 🔄 Project Workflow
+🛠️ Tools & Technologies
 
-### 1. Data Loading & Initial Inspection
-The dataset was loaded using Pandas to assess shape, column types, missing values, distribution anomalies, and baseline summary statistics.
-
-### 2. Data Cleaning
-- Handled missing values based on domain logic (e.g., categorical missingness indicating absence of a feature like garages or pools was imputed as `'None'`).
-- Identified and resolved duplicate records and inconsistent data formats.
-- Audited impossible chronological records (e.g., sale years occurring prior to construction years).
-
-### 3. Feature Engineering
-Engineered informative domain-specific features to uncover hidden patterns:
-- `House_age`: Property age at the time of sale.
-- `Price_Per_Sq_Ft`: Sale price divided by above-ground living area.
-- `Overall_Qual_Num`: Numeric mapping of property build quality.
-- `Luxury_House`: Indicator for high-end properties (Quality Score $\ge 8$).
-- `Price_Category`: Categorical bins for price segments.
-- `Total_Bathrooms`: Combined metric of full and half bathrooms.
-- `Is_Renovated`: Flag identifying properties remodeled after initial construction.
+- Programming Language: Python
+- Data Manipulation: Pandas, NumPy
+- Data Visualization: Matplotlib
+- Database & Querying: SQLite, SQL
+- Environment: Jupyter Notebook
+- Version Control: Git & GitHub
 
 ---
 
-## 📊 Exploratory Data Analysis & Visualizations
+🔄 Project Workflow
 
-The analysis investigated direct relationships between property characteristics and market valuations:
+1. Data Loading & Initial Inspection
 
-### 1. Living Area vs Sale Price
-Examining how above-ground living space impacts the final transaction value:
-![Living Area vs Price](images/living_area_vs_price.png)
+The dataset was loaded using Pandas and examined to understand its structure, data types, missing values, distributions, and basic statistics.
 
-### 2. Overall Quality vs Sale Price
-Evaluating the strong correlation between construction quality and property valuation:
-![Quality vs Price](images/quality_vs_price.png)
+2. Data Cleaning
 
-### 3. Average Sale Price Trend by Year
-Tracking real estate price trajectory over recorded transaction years:
-![Price by Year](images/avg_price_by_year.png)
+The dataset was systematically checked for:
 
-### 4. Room Count Impact on Sale Price
-Analyzing the non-linear relationship between total rooms above ground and sale price:
-![Price by Rooms](images/price_by_rooms.png)
+- Missing values
+- Duplicate records
+- Invalid values
+- Inconsistent data
+- Impossible relationships between construction and sale years
+
+Missing values were handled based on the meaning of each variable. For example, missing categorical values indicating the absence of a feature were replaced with ""None"".
+
+Potentially invalid or unusual observations were investigated before deciding how they should be handled.
+
+3. Feature Engineering
+
+Several domain-specific features were created to support further analysis:
+
+- "House_age" — age of the house at the time of sale
+- "Price_Per_Sq_Ft" — sale price divided by above-ground living area
+- "Overall_Qual_Num" — numerical representation of overall quality
+- "Luxury_House" — identifies properties with an overall quality score of 8 or higher
+- "Price_Category" — groups properties into defined price segments
+- "Total_Bathrooms" — combines full and half bathrooms into a single metric
+- "Is_Renovated" — identifies properties remodeled after their original construction
+
+4. Exploratory Data Analysis
+
+The analysis explored relationships between property characteristics and sale prices, including:
+
+- Living area and sale price
+- Overall quality and sale price
+- House age and sale price
+- Number of rooms and sale price
+- Average sale price by year
+- Average sale price by neighborhood
+- Price per square foot across neighborhoods
+
+Visualizations were used to identify patterns, relationships, and unusual observations in the data.
+
+5. Outlier & Inconsistency Analysis
+
+Unusual observations were investigated rather than being automatically removed.
+
+The analysis focused particularly on:
+
+- Extremely high or low price-per-square-foot values
+- Unusual property characteristics
+- Records where the sale year was earlier than the construction year
+
+These observations were examined in context to distinguish potentially valid cases from actual data quality issues.
+
+6. SQL Analysis
+
+The cleaned dataset was loaded into a SQLite database and analyzed using SQL queries.
+
+The SQL analysis addressed questions such as:
+
+- Which neighborhoods have the highest average sale prices?
+- Which properties have the highest sale prices?
+- Which lower-priced properties have relatively high overall quality?
+
+This section demonstrates the use of SQL alongside Pandas for structured data analysis.
 
 ---
 
-## 🔍 Outlier & Inconsistency Analysis
-- Examined extreme price-per-square-foot anomalies on both ends of the distribution.
-- Investigated records with anomalous construction vs. sale timelines, determining appropriate handling rather than arbitrarily dropping data points.
+💡 Key Findings
+
+- Overall quality has a strong positive relationship with sale price.
+- Larger living areas are generally associated with higher sale prices.
+- House age shows a negative relationship with sale price, although this relationship is not absolute.
+- Neighborhood has a substantial impact on average sale prices, indicating differences in location value.
+- Room count generally has a positive relationship with price, although the relationship becomes less consistent for properties with a very large number of rooms.
+- Some properties have unusual characteristics that require investigation rather than being automatically treated as errors.
 
 ---
 
-## 🗄️ SQL Analysis
-The cleaned tabular data was migrated into an in-memory / local **SQLite database** to execute structured queries, answering business-level questions such as:
-- Top neighborhoods ranked by average transaction value.
-- Highest-value properties across distinct building classes.
-- Undervalued properties exhibiting high overall build quality.
+🎯 Conclusion
 
----
+This project demonstrates a complete data analysis workflow using Python, Pandas, NumPy, Matplotlib, and SQL.
 
-## 💡 Key Insights
-- **Quality Dominance:** `Overall Quality` demonstrates the strongest positive correlation with property sale prices.
-- **Living Area Scaling:** Square footage is a consistent primary driver of price, with notable luxury outliers.
-- **Neighborhood Divergence:** Significant price variance exists across neighborhoods, indicating strong location premium.
-- **Diminishing Returns on Rooms:** Price scales positively with room count up to a threshold, after which variance increases significantly.
-
----
-
-## 🎯 Conclusion
-This project demonstrates a complete, production-grade data analysis pipeline: from raw data profiling, systematic cleaning, and feature engineering to graphical exploration, anomaly detection, and SQL querying.
-
----
-
-## 👤 Author
-**Zahra Ahmadi**  
-- **GitHub:** [zahraahmadi9700](https://github.com/zahraahmadi9700)
+It covers the process from raw data inspection and
