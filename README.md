@@ -1,4 +1,4 @@
-🏡 Ames Housing Price Analysis
+# 🏡 Ames Housing Price Analysis
 
 📌 Project Overview
 
@@ -52,25 +52,25 @@ The analysis explored relationships between property characteristics and sale pr
 
 Examining the relationship between above-ground living area and sale price:
 
-"Living Area vs Price" (images/living_area_vs_price.png)
+![Living Area vs Price](images/living_area_vs_price.png)
 
 2. Overall Quality vs Sale Price
 
 Exploring the relationship between overall quality and property sale price:
 
-"Quality vs Price" (images/quality_vs_price.png)
+![Quality vs Price](images/quality_vs_price.png)
 
 3. Average Sale Price Trend by Year
 
 Examining changes in average sale prices across the recorded sale years:
 
-"Price by Year" (images/avg_price_by_year.png)
+![Price by Year](images/avg_price_by_year.png)
 
 4. Room Count Impact on Sale Price
 
 Exploring the relationship between above-ground room count and sale price:
 
-"Price by Rooms" (images/price_by_rooms.png)
+![Price by Rooms](images/price_by_rooms.png)
 
 ---
 
